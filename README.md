@@ -1,4 +1,4 @@
-# Nerfies
+# TopoGS
 
 This is the repository that contains source code for the [TopoGS website](https://gongshiqiang02.github.io/topogs).
 
