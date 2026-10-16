@@ -1,14 +1,17 @@
 # Nerfies
 
-This is the repository that contains source code for the [Nerfies website](https://nerfies.github.io).
+This is the repository that contains source code for the [TopoGS website](https://gongshiqiang02.github.io/topogs).
 
-If you find Nerfies useful for your work please cite:
+If you find TopoGS useful for your work please cite:
 ```
-@article{park2021nerfies
-  author    = {Park, Keunhong and Sinha, Utkarsh and Barron, Jonathan T. and Bouaziz, Sofien and Goldman, Dan B and Seitz, Steven M. and Martin-Brualla, Ricardo},
-  title     = {Nerfies: Deformable Neural Radiance Fields},
-  journal   = {ICCV},
-  year      = {2021},
+@misc{zhang2026topogstopologyawareanchorfeature,
+  title={TopoGS: Topology-Aware Anchor Feature Aggregation for Large-Scale 3D Gaussian Splatting},
+  author={Wei Zhang and Shiqiang Gong and Shengkai Yu and Zeyu Wang and Clement Mallet and Zhitong Xiong and Qi Wang},
+  year={2026},
+  eprint={2609.27868},
+  archivePrefix={arXiv},
+  primaryClass={cs.CV},
+  url={https://arxiv.org/abs/2609.27868},
 }
 ```
 
