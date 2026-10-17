@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="description"
-        content="Deformable Neural Radiance Fields creates free-viewpoint portraits (nerfies) from casually captured videos.">
-  <meta name="keywords" content="Nerfies, D-NeRF, NeRF">
+        content="TopoGS: Topology-Aware Anchor Feature Aggregation for Large-Scale 3D Gaussian Splatting. Achieves 2.13-4.84 dB PSNR gains over state-of-the-art methods while rendering faster.">
+  <meta name="keywords" content="TopoGS, 3D Gaussian Splatting, 3DGS, Large-Scale Rendering, Neural Rendering">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>TopoGS: Topology-Aware Anchor Feature Aggregation for Large-Scale 3D Gaussian Splatting</title>
 
@@ -28,6 +28,7 @@
   <link rel="stylesheet" href="./static/css/bulma.min.css">
   <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
   <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/image-compare-viewer.min.css">
   <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
   <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
@@ -38,7 +39,9 @@
   <script defer src="./static/js/fontawesome.all.min.js"></script>
   <script src="./static/js/bulma-carousel.min.js"></script>
   <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/image-compare-viewer.min.js"></script>
   <script src="./static/js/index.js"></script>
+  <script src="./static/js/compare.js"></script>
 </head>
 <body>
 
@@ -106,14 +109,17 @@
 <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
-      <video id="teaser" autoplay muted loop playsinline height="100%">
-        <source src="./static/videos/teaser.mp4"
-                type="video/mp4">
-      </video>
+      <img
+        id="teaser"
+        src="./static/images/teaser.jpg"
+        alt="TopoGS teaser"
+        style="display: block; width: 100%; height: auto;"
+      >
       <h2 class="subtitle has-text-centered">
-        <span class="dnerf">Nerfies</span> turns selfie videos from your phone into
-        free-viewpoint
-        portraits.
+        <strong>TopoGS</strong> reduces cross-level feature redundancy through
+        topology-aware anchor aggregation, producing sharper renderings.
+        On Mill19 and UrbanScene3D, it improves PSNR by
+        <strong>2.67–4.84 dB</strong> over its backbone, CityGS-X.
       </h2>
     </div>
   </div>
@@ -179,6 +185,7 @@
 
 
 <section class="section">
+  <!--/ Abstract. -->
   <div class="container is-max-desktop">
     <!-- Abstract. -->
     <div class="columns is-centered has-text-centered">
@@ -199,162 +206,198 @@
             then applies soft weighting to accommodate varying topological sparsity. 
             Experiments on ten scenes from Mill19, UrbanScene3D, Tanks & Temples, MatrixCity, 
             and WHU show consistent improvements over state-of-the-art methods. 
-            TopoGS achieves average PSNR gains of 2.13, 1.78, and 0.29 dB over the strongest reported baseline on 
-            aerial, ground-level, and synthetic-cartographic scenes, respectively, while rendering faster and using less memory. 
-          </p>
+            <strong>TopoGS achieves average PSNR gains of 2.13, 1.78, and 0.29 dB over the strongest reported baseline</strong>
+            on aerial, ground-level, and synthetic-cartographic scenes, respectively,
+            <strong>while rendering faster and using less memory.</strong>
+        </p>
         </div>
       </div>
     </div>
-    <!--/ Abstract. -->
 
-    <!-- Paper video. -->
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Video</h2>
-        <div class="publication-video">
-          <iframe src="https://www.youtube.com/embed/MrKrnHhk8IA?rel=0&amp;showinfo=0"
-                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-        </div>
-      </div>
-    </div>
-    <!--/ Paper video. -->
   </div>
 </section>
 
-
+<!-- Quantitative Results -->
 <section class="section">
   <div class="container is-max-desktop">
+    <div class="has-text-centered">
+      <h2 class="title is-3">Quantitative Results</h2>
+      <p class="compare-intro">
+        Comparison on the large-scale aerial scenes of Mill19 and UrbanScene3D. Best results in <strong>bold</strong>.
+      </p>
+    </div>
+    <div class="table-container">
+      <table class="table is-bordered is-hoverable results-table">
+        <thead>
+          <tr>
+            <th rowspan="2">Method</th>
+            <th colspan="3">Building</th>
+            <th colspan="3">Rubble</th>
+            <th colspan="3">Residence</th>
+            <th colspan="3">Sci-Art</th>
+          </tr>
+          <tr>
+            <th>SSIM↑</th><th>PSNR↑</th><th>LPIPS↓</th>
+            <th>SSIM↑</th><th>PSNR↑</th><th>LPIPS↓</th>
+            <th>SSIM↑</th><th>PSNR↑</th><th>LPIPS↓</th>
+            <th>SSIM↑</th><th>PSNR↑</th><th>LPIPS↓</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>CityGaussian</td>
+            <td>0.778</td><td>21.55</td><td>0.246</td>
+            <td>0.813</td><td>25.77</td><td>0.228</td>
+            <td>0.813</td><td>22.06</td><td>0.211</td>
+            <td>0.837</td><td>21.39</td><td>0.230</td>
+          </tr>
+          <tr>
+            <td>Momentum-GS</td>
+            <td>0.815</td><td>23.23</td><td>0.194</td>
+            <td>0.827</td><td>25.93</td><td>0.201</td>
+            <td>0.828</td><td>22.21</td><td>0.197</td>
+            <td>0.856</td><td>23.02</td><td>0.205</td>
+          </tr>
+          <tr>
+            <td>BlockGaussian</td>
+            <td>0.775</td><td>22.05</td><td>0.206</td>
+            <td>0.824</td><td>26.33</td><td>0.200</td>
+            <td>0.838</td><td>23.25</td><td>0.182</td>
+            <td>0.881</td><td>25.91</td><td>0.171</td>
+          </tr>
+          <tr>
+            <td>SIG-L</td>
+            <td>0.778</td><td>22.86</td><td>0.225</td>
+            <td>0.843</td><td>27.35</td><td>0.189</td>
+            <td>0.840</td><td>23.46</td><td>0.194</td>
+            <td>0.890</td><td>25.94</td><td>0.170</td>
+          </tr>
+          <tr class="group-start">
+            <td>CityGS-X</td>
+            <td>0.817</td><td>22.76</td><td>0.191</td>
+            <td>0.823</td><td>26.15</td><td>0.210</td>
+            <td>0.819</td><td>22.44</td><td>0.194</td>
+            <td>0.867</td><td>22.77</td><td>0.179</td>
+          </tr>
+          <tr>
+            <td>Geo-GS</td>
+            <td>0.750</td><td>22.26</td><td>0.277</td>
+            <td>0.772</td><td>24.22</td><td>0.295</td>
+            <td>0.856</td><td>23.32</td><td>0.185</td>
+            <td><strong>0.913</strong></td><td>25.76</td><td>0.155</td>
+          </tr>
+          <tr class="is-ours">
+            <td><strong>TopoGS (Ours)</strong></td>
+            <td><strong>0.875</strong></td><td><strong>25.43</strong></td><td><strong>0.152</strong></td>
+            <td><strong>0.912</strong></td><td><strong>30.99</strong></td><td><strong>0.127</strong></td>
+            <td><strong>0.899</strong></td><td><strong>25.24</strong></td><td><strong>0.122</strong></td>
+            <td>0.908</td><td><strong>26.90</strong></td><td><strong>0.140</strong></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="table-note has-text-centered">
+      The upper group is without and the lower group with explicit geometric optimization; CityGS-X is our backbone.
+      PSNR gains over CityGS-X: <strong>+2.67</strong> (Building), <strong>+4.84</strong> (Rubble),
+      <strong>+2.80</strong> (Residence), <strong>+4.13 dB</strong> (Sci-Art). Full results in the paper.
+    </p>
+  </div>
+</section>
 
-    <div class="columns is-centered">
-
-      <!-- Visual Effects. -->
-      <div class="column">
-        <div class="content">
-          <h2 class="title is-3">Visual Effects</h2>
-          <p>
-            Using <i>nerfies</i> you can create fun visual effects. This Dolly zoom effect
-            would be impossible without nerfies since it would require going through a wall.
-          </p>
-          <video id="dollyzoom" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/dollyzoom-stacked.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-      </div>
-      <!--/ Visual Effects. -->
-
-      <!-- Matting. -->
-      <div class="column">
-        <h2 class="title is-3">Matting</h2>
-        <div class="columns is-centered">
-          <div class="column content">
-            <p>
-              As a byproduct of our method, we can also solve the matting problem by ignoring
-              samples that fall outside of a bounding box during rendering.
-            </p>
-            <video id="matting-video" controls playsinline height="100%">
-              <source src="./static/videos/matting.mp4"
-                      type="video/mp4">
-            </video>
-          </div>
-
-        </div>
+<!-- Rendering Comparison -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="has-text-centered">
+      <h2 class="title is-3">Rendering Comparison</h2>
+      <p class="compare-intro">
+        Drag the slider to compare TopoGS with the strongest baseline on each scene.
+        TopoGS recovers sharper solar-panel grids, facade edges and fine text.
+      </p>
+    </div>
+    <div id="rendering-compare" class="compare-gallery">
+      <div class="compare-tabs buttons is-centered"></div>
+      <div class="compare-stage"></div>
+      <div class="compare-footer">
+        <span class="compare-caption"></span>
+        <div class="compare-views buttons"></div>
       </div>
     </div>
-    <!--/ Matting. -->
+  </div>
+</section>
 
-    <!-- Animation. -->
-    <div class="columns is-centered">
-      <div class="column is-full-width">
-        <h2 class="title is-3">Animation</h2>
-
-        <!-- Interpolating. -->
-        <h3 class="title is-4">Interpolating states</h3>
-        <div class="content has-text-justified">
-          <p>
-            We can also animate the scene by interpolating the deformation latent codes of two input
-            frames. Use the slider here to linearly interpolate between the left frame and the right
-            frame.
-          </p>
-        </div>
-        <div class="columns is-vcentered interpolation-panel">
-          <div class="column is-3 has-text-centered">
-            <img src="./static/images/interpolate_start.jpg"
-                 class="interpolation-image"
-                 alt="Interpolate start reference image."/>
-            <p>Start Frame</p>
-          </div>
-          <div class="column interpolation-video-column">
-            <div id="interpolation-image-wrapper">
-              Loading...
-            </div>
-            <input class="slider is-fullwidth is-large is-info"
-                   id="interpolation-slider"
-                   step="1" min="0" max="100" value="0" type="range">
-          </div>
-          <div class="column is-3 has-text-centered">
-            <img src="./static/images/interpolate_end.jpg"
-                 class="interpolation-image"
-                 alt="Interpolation end reference image."/>
-            <p class="is-bold">End Frame</p>
-          </div>
-        </div>
-        <br/>
-        <!--/ Interpolating. -->
-
-        <!-- Re-rendering. -->
-        <h3 class="title is-4">Re-rendering the input video</h3>
-        <div class="content has-text-justified">
-          <p>
-            Using <span class="dnerf">Nerfies</span>, you can re-render a video from a novel
-            viewpoint such as a stabilized camera by playing back the training deformations.
-          </p>
-        </div>
-        <div class="content has-text-centered">
-          <video id="replay-video"
-                 controls
-                 muted
-                 preload
-                 playsinline
-                 width="75%">
-            <source src="./static/videos/replay.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <!--/ Re-rendering. -->
-
+<!-- Geometry Comparison -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="has-text-centered">
+      <h2 class="title is-3">Geometry Comparison</h2>
+      <p class="compare-intro">
+        Without extra geometric supervision beyond the CityGS-X backbone, TopoGS yields sharper normals,
+        cleaner planar depth and marching-cubes meshes with far fewer floaters on UrbanScene3D-Residence.
+      </p>
+    </div>
+    <div id="geometry-compare" class="compare-gallery">
+      <div class="compare-tabs buttons is-centered"></div>
+      <div class="compare-stage"></div>
+      <div class="compare-footer">
+        <span class="compare-caption"></span>
+        <div class="compare-views buttons"></div>
       </div>
     </div>
-    <!--/ Animation. -->
+  </div>
+</section>
 
+<!-- Ablation & Efficiency -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Ablation &amp; Efficiency</h2>
+    <div class="columns is-variable is-6">
 
-    <!-- Concurrent Work. -->
-    <div class="columns is-centered">
-      <div class="column is-full-width">
-        <h2 class="title is-3">Related Links</h2>
-
+      <div class="column is-7">
+        <h3 class="title is-5">Component Ablation</h3>
+        <img src="./static/images/ablation.jpg" class="figure-img"
+             alt="Visual ablation on Mill19-Building: baseline, with HAC, and with HAC and SACA, shown as renders, normals and depths.">
         <div class="content has-text-justified">
           <p>
-            There's a lot of excellent work that was introduced around the same time as ours.
-          </p>
-          <p>
-            <a href="https://arxiv.org/abs/2104.09125">Progressive Encoding for Neural Optimization</a> introduces an idea similar to our windowed position encoding for coarse-to-fine optimization.
-          </p>
-          <p>
-            <a href="https://www.albertpumarola.com/research/D-NeRF/index.html">D-NeRF</a> and <a href="https://gvv.mpi-inf.mpg.de/projects/nonrigid_nerf/">NR-NeRF</a>
-            both use deformation fields to model non-rigid scenes.
-          </p>
-          <p>
-            Some works model videos with a NeRF by directly modulating the density, such as <a href="https://video-nerf.github.io/">Video-NeRF</a>, <a href="https://www.cs.cornell.edu/~zl548/NSFF/">NSFF</a>, and <a href="https://neural-3d-video.github.io/">DyNeRF</a>
-          </p>
-          <p>
-            There are probably many more by the time you are reading this. Check out <a href="https://dellaert.github.io/NeRF/">Frank Dellart's survey on recent NeRF papers</a>, and <a href="https://github.com/yenchenlin/awesome-NeRF">Yen-Chen Lin's curated list of NeRF papers</a>.
+            On Mill19-Building, HAC alone adds <strong>+1.91 dB</strong> PSNR over the CityGS-X baseline.
+            SACA's containment mask and soft weighting add a further <strong>+0.76 dB</strong>,
+            refining the solar-panel grid and truss structures.
           </p>
         </div>
+        <table class="table is-narrow is-fullwidth compact-table">
+          <thead>
+            <tr><th>Variant</th><th>PSNR↑</th><th>Train time↓</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Baseline (CityGS-X)</td><td>22.76</td><td>2h15m</td></tr>
+            <tr><td>+ HAC</td><td>24.67</td><td>2h22m</td></tr>
+            <tr><td>+ HAC + SACA mask</td><td>25.23</td><td>2h28m</td></tr>
+            <tr class="is-ours"><td><strong>+ HAC + SACA (soft α)</strong></td><td><strong>25.43</strong></td><td>2h30m</td></tr>
+          </tbody>
+        </table>
       </div>
-    </div>
-    <!--/ Concurrent Work. -->
 
+      <div class="column is-5">
+        <h3 class="title is-5">Efficiency</h3>
+        <img src="./static/images/efficiency.png" class="figure-img"
+             alt="PSNR and training time on Mill19-Rubble for Mega-NeRF, 3DGS, VastGS, DoGaussian, CityGS-X and TopoGS.">
+        <div class="content has-text-justified">
+          <p>
+            On Mill19-Rubble, TopoGS gains <strong>+4.84 dB</strong> over CityGS-X with only
+            <strong>+15 min</strong> of training. HAC adds about 4K parameters and SACA is parameter-free.
+          </p>
+        </div>
+        <table class="table is-narrow is-fullwidth compact-table">
+          <thead>
+            <tr><th>Building</th><th>FPS↑</th><th>Mem↓</th><th>#Gauss↓</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>CityGS-X</td><td>29.0</td><td>4.6 GB</td><td>6.38 M</td></tr>
+            <tr class="is-ours"><td><strong>TopoGS</strong></td><td><strong>39.4</strong></td><td><strong>3.0 GB</strong></td><td><strong>4.16 M</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
   </div>
 </section>
 
@@ -390,16 +433,8 @@
       <div class="column is-8">
         <div class="content">
           <p>
-            This website is licensed under a <a rel="license"
-                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
-            Commons Attribution-ShareAlike 4.0 International License</a>.
-          </p>
-          <p>
-            This means you are free to borrow the <a
-              href="https://github.com/nerfies/nerfies.github.io">source code</a> of this website,
-            we just ask that you link back to this page in the footer.
-            Please remember to remove the analytics code included in the header of the website which
-            you do not want on your website.
+            This website template is borrowed from <a href="https://nerfies.github.io/">Nerfies</a>.
+            We thank the authors for open sourcing their template.
           </p>
         </div>
       </div>
