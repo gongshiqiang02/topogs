@@ -218,7 +218,7 @@
 </section>
 
 <!-- Quantitative Results -->
-<section class="section">
+<section class="section is-compact">
   <div class="container is-max-desktop">
     <div class="has-text-centered">
       <h2 class="title is-3">Quantitative Results</h2>
@@ -305,9 +305,9 @@
 </section>
 
 <!-- Rendering Comparison -->
-<section class="section">
+<section class="section is-compact">
   <div class="container is-max-desktop">
-    <div class="has-text-centered">
+    <div>
       <h2 class="title is-3">Rendering Comparison</h2>
       <p class="compare-intro">
         Drag the slider to compare TopoGS with the strongest baseline on each scene.
@@ -315,7 +315,7 @@
       </p>
     </div>
     <div id="rendering-compare" class="compare-gallery">
-      <div class="compare-tabs buttons is-centered"></div>
+      <div class="compare-tabs buttons"></div>
       <div class="compare-stage"></div>
       <div class="compare-footer">
         <span class="compare-caption"></span>
@@ -326,9 +326,9 @@
 </section>
 
 <!-- Geometry Comparison -->
-<section class="section">
+<section class="section is-compact">
   <div class="container is-max-desktop">
-    <div class="has-text-centered">
+    <div>
       <h2 class="title is-3">Geometry Comparison</h2>
       <p class="compare-intro">
         Without extra geometric supervision beyond the CityGS-X backbone, TopoGS yields sharper normals,
@@ -336,7 +336,7 @@
       </p>
     </div>
     <div id="geometry-compare" class="compare-gallery">
-      <div class="compare-tabs buttons is-centered"></div>
+      <div class="compare-tabs buttons"></div>
       <div class="compare-stage"></div>
       <div class="compare-footer">
         <span class="compare-caption"></span>
@@ -347,22 +347,21 @@
 </section>
 
 <!-- Ablation & Efficiency -->
-<section class="section">
+<section class="section is-compact">
   <div class="container is-max-desktop">
-    <h2 class="title is-3 has-text-centered">Ablation &amp; Efficiency</h2>
-    <div class="columns is-variable is-6">
+    <h2 class="title is-3">Ablation &amp; Efficiency</h2>
+    <div class="columns is-variable is-5 ablation-row">
 
-      <div class="column is-7">
-        <h3 class="title is-5">Component Ablation</h3>
-        <img src="./static/images/ablation.jpg" class="figure-img"
-             alt="Visual ablation on Mill19-Building: baseline, with HAC, and with HAC and SACA, shown as renders, normals and depths.">
-        <div class="content has-text-justified">
-          <p>
-            On Mill19-Building, HAC alone adds <strong>+1.91 dB</strong> PSNR over the CityGS-X baseline.
-            SACA's containment mask and soft weighting add a further <strong>+0.76 dB</strong>,
-            refining the solar-panel grid and truss structures.
-          </p>
+      <div class="column is-8 ablation-card">
+        <h3 class="title is-5">Component Ablation <span class="card-tag">Mill19-Building</span></h3>
+        <div class="figure-frame">
+          <img src="./static/images/ablation.jpg"
+               alt="Visual ablation on Mill19-Building: baseline, with HAC, and with HAC and SACA, shown as renders and depths.">
         </div>
+        <p class="card-text">
+          HAC alone adds <strong>+1.91 dB</strong> over the baseline; SACA's containment mask and soft weighting add
+          another <strong>+0.76 dB</strong>, sharpening panel grids and truss structures.
+        </p>
         <table class="table is-narrow is-fullwidth compact-table">
           <thead>
             <tr><th>Variant</th><th>PSNR↑</th><th>Train time↓</th></tr>
@@ -376,23 +375,25 @@
         </table>
       </div>
 
-      <div class="column is-5">
-        <h3 class="title is-5">Efficiency</h3>
-        <img src="./static/images/efficiency.png" class="figure-img"
-             alt="PSNR and training time on Mill19-Rubble for Mega-NeRF, 3DGS, VastGS, DoGaussian, CityGS-X and TopoGS.">
-        <div class="content has-text-justified">
-          <p>
-            On Mill19-Rubble, TopoGS gains <strong>+4.84 dB</strong> over CityGS-X with only
-            <strong>+15 min</strong> of training. HAC adds about 4K parameters and SACA is parameter-free.
-          </p>
+      <div class="column is-4 ablation-card">
+        <h3 class="title is-5">Efficiency <span class="card-tag">Mill19</span></h3>
+        <div class="figure-frame">
+          <img src="./static/images/efficiency.png"
+               alt="PSNR and training time on Mill19-Rubble for Mega-NeRF, 3DGS, VastGS, DoGaussian, CityGS-X and TopoGS.">
         </div>
+        <p class="card-text">
+          <strong>+4.84 dB</strong> on Rubble for only <strong>+15 min</strong> of training,
+          while rendering faster with fewer Gaussians.
+        </p>
         <table class="table is-narrow is-fullwidth compact-table">
           <thead>
-            <tr><th>Building</th><th>FPS↑</th><th>Mem↓</th><th>#Gauss↓</th></tr>
+            <tr><th>Building</th><th>CityGS-X</th><th>Ours</th></tr>
           </thead>
           <tbody>
-            <tr><td>CityGS-X</td><td>29.0</td><td>4.6 GB</td><td>6.38 M</td></tr>
-            <tr class="is-ours"><td><strong>TopoGS</strong></td><td><strong>39.4</strong></td><td><strong>3.0 GB</strong></td><td><strong>4.16 M</strong></td></tr>
+            <tr><td>FPS↑</td><td>29.0</td><td class="is-ours-cell"><strong>39.4</strong></td></tr>
+            <tr><td>Mem↓</td><td>4.6 GB</td><td class="is-ours-cell"><strong>3.0 GB</strong></td></tr>
+            <tr><td>#Gauss↓</td><td>6.38 M</td><td class="is-ours-cell"><strong>4.16 M</strong></td></tr>
+            <tr><td>Params</td><td>–</td><td class="is-ours-cell">+4K</td></tr>
           </tbody>
         </table>
       </div>
@@ -401,8 +402,39 @@
   </div>
 </section>
 
+<!-- Related Work -->
+<section class="section is-compact">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3">Related Work</h2>
+    <div class="content related-work">
+      <ul>
+        <li>
+          <a href="https://repo-sam.inria.fr/fungraph/3d-gaussian-splatting/">3D Gaussian Splatting</a>
+          introduces explicit 3D Gaussian primitives with a differentiable rasterizer for real-time radiance field rendering.
+        </li>
+        <li>
+          <a href="https://city-super.github.io/octree-gs/">Octree-GS</a>
+          organizes anchor-based neural Gaussians into an octree level-of-detail hierarchy for consistent real-time rendering.
+        </li>
+        <li>
+          <a href="https://dekuliutesla.github.io/citygs/">CityGaussian</a>
+          scales 3DGS to large scenes with divide-and-conquer training and block-wise level-of-detail rendering.
+        </li>
+        <li>
+          <a href="https://lifuguan.github.io/CityGS-X/">CityGS-X</a>
+          builds a parallel hybrid hierarchical representation with multi-task rendering for efficient, geometrically accurate
+          large-scale reconstruction. It serves as the backbone of TopoGS.
+        </li>
+        <li>
+          Geo-GS (IEEE TMM 2026)
+          proposes a geometry-aware 3D Gaussian representation for real-time rendering of large-scale scenes.
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
 
-<section class="section" id="BibTeX">
+<section class="section is-compact" id="BibTeX">
   <div class="container is-max-desktop content">
     <h2 class="title">BibTeX</h2>
     <pre><code>@misc{zhang2026topogstopologyawareanchorfeature,

@@ -157,6 +157,17 @@ body {
 }
 
 
+/* Tighter vertical rhythm for the result sections after the abstract */
+.section.is-compact {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
+.related-work li {
+  margin-bottom: 0.4rem;
+}
+
+
 /* Quantitative results */
 .results-table {
   margin: 0 auto;
@@ -196,8 +207,7 @@ body {
 
 /* Slider comparison galleries */
 .compare-intro {
-  max-width: 44rem;
-  margin: 0 auto 1.25rem;
+  margin-bottom: 1rem;
   color: #4a4a4a;
 }
 
@@ -244,17 +254,59 @@ body {
 }
 
 
-/* Ablation & efficiency */
-.figure-img {
-  display: block;
-  width: 100%;
-  border-radius: 10px;
+/* Ablation & efficiency: two cards with matching rows (title, figure, text, table) */
+.ablation-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.ablation-card .title {
+  margin-bottom: 0.75rem;
+}
+
+.card-tag {
+  font-size: 0.8rem;
+  font-weight: normal;
+  color: #888;
+  margin-left: 0.4rem;
+}
+
+.figure-frame {
+  height: 340px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border: 1px solid #bbb;
-  margin-bottom: 1rem;
+  border-radius: 10px;
+  background: #fff;
+  overflow: hidden;
+}
+
+.figure-frame img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.card-text {
+  color: #4a4a4a;
+  font-size: 0.95rem;
+  margin: 0.75rem 0;
+  flex-grow: 1;
 }
 
 .compact-table {
   font-size: 0.85rem;
+}
+
+.compact-table .is-ours-cell {
+  background: #f0f8ff;
+}
+
+@media screen and (max-width: 768px) {
+  .figure-frame {
+    height: auto;
+  }
 }
 
 .compact-table th:not(:first-child),
