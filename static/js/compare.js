@@ -7,37 +7,39 @@ const IMG = './static/images/';
 
 const RENDERING = [
   { name: 'Building', views: [
-    { before: 'rendering/building_000194_citygsx.jpg', after: 'rendering/building_000194_topogs.jpg', baseline: 'CityGS-X', tag: 'Mill19 · 000194' },
-    { before: 'rendering/building_001358_citygsx.jpg', after: 'rendering/building_001358_topogs.jpg', baseline: 'CityGS-X', tag: 'Mill19 · 001358' },
+    { before: 'rendering/building_000194_citygsx.png', after: 'rendering/building_000194_topogs.png', baseline: 'CityGS-X', tag: 'Mill19 · 000194' },
+    { before: 'rendering/building_001358_citygsx.png', after: 'rendering/building_001358_topogs.png', baseline: 'CityGS-X', tag: 'Mill19 · 001358' },
   ]},
   { name: 'Rubble', views: [
-    { before: null, baseline: 'CityGS-X', tag: 'Mill19' },
+    { before: 'rendering/rubble_000415_citygsx.png', after: 'rendering/rubble_000415_topogs.png', baseline: 'CityGS-X', tag: 'UrbanScene3D · 000415' },
+    { before: 'rendering/rubble_001411_citygsx.png', after: 'rendering/rubble_001411_topogs.png', baseline: 'CityGS-X', tag: 'UrbanScene3D · 001411' },
   ]},
   { name: 'Residence', views: [
-    { before: 'rendering/residence_000207_citygsx.jpg', after: 'rendering/residence_000207_topogs.jpg', baseline: 'CityGS-X', tag: 'UrbanScene3D · 000207' },
-    { before: 'rendering/residence_001176_citygsx.jpg', after: 'rendering/residence_001176_topogs.jpg', baseline: 'CityGS-X', tag: 'UrbanScene3D · 001176' },
+    { before: 'rendering/residence_000207_citygsx.png', after: 'rendering/residence_000207_topogs.png', baseline: 'CityGS-X', tag: 'UrbanScene3D · 000207' },
+    { before: 'rendering/residence_001176_citygsx.png', after: 'rendering/residence_001176_topogs.png', baseline: 'CityGS-X', tag: 'UrbanScene3D · 001176' },
   ]},
   { name: 'Sci-Art', views: [
-    { before: null, baseline: 'CityGS-X', tag: 'UrbanScene3D' },
+    { before: 'rendering/sciart_001206_citygsx.png', after: 'rendering/sciart_001206_topogs.png', baseline: 'CityGS-X', tag: 'UrbanScene3D · 001206' },
+    { before: 'rendering/sciart_001912_citygsx.png', after: 'rendering/sciart_001912_topogs.png', baseline: 'CityGS-X', tag: 'UrbanScene3D · 001912' },
   ]},
   { name: 'Train', views: [
-    { before: 'rendering/train_00105_geogs.jpg', after: 'rendering/train_00105_topogs.jpg', baseline: 'Geo-GS', tag: 'Tanks & Temples · 00105' },
-    { before: 'rendering/train_00129_geogs.jpg', after: 'rendering/train_00129_topogs.jpg', baseline: 'Geo-GS', tag: 'Tanks & Temples · 00129' },
+    { before: 'rendering/train_00105_geogs.png', after: 'rendering/train_00105_topogs.png', baseline: 'Geo-GS', tag: 'Tanks & Temples · 00105' },
+    { before: 'rendering/train_00129_geogs.png', after: 'rendering/train_00129_topogs.png', baseline: 'Geo-GS', tag: 'Tanks & Temples · 00129' },
   ]},
   { name: 'Truck', views: [
-    { before: 'rendering/truck_000057_geogs.jpg', after: 'rendering/truck_000057_topogs.jpg', baseline: 'Geo-GS', tag: 'Tanks & Temples · 000057' },
-    { before: 'rendering/truck_000081_geogs.jpg', after: 'rendering/truck_000081_topogs.jpg', baseline: 'Geo-GS', tag: 'Tanks & Temples · 000081' },
+    { before: 'rendering/truck_000057_geogs.png', after: 'rendering/truck_000057_topogs.png', baseline: 'Geo-GS', tag: 'Tanks & Temples · 000057' },
+    { before: 'rendering/truck_000081_geogs.png', after: 'rendering/truck_000081_topogs.png', baseline: 'Geo-GS', tag: 'Tanks & Temples · 000081' },
   ]},
 ];
 
 const GEOMETRY = [
   { name: 'Normal', views: [
-    { before: 'geometry/residence_000207_normal_citygsx.jpg', after: 'geometry/residence_000207_normal_topogs.jpg', baseline: 'CityGS-X', tag: 'Residence · 000207' },
-    { before: 'geometry/residence_001176_normal_citygsx.jpg', after: 'geometry/residence_001176_normal_topogs.jpg', baseline: 'CityGS-X', tag: 'Residence · 001176' },
+    { before: 'geometry/residence_000207_normal_citygsx.png', after: 'geometry/residence_000207_normal_topogs.png', baseline: 'CityGS-X', tag: 'Residence · 000207' },
+    { before: 'geometry/residence_001176_normal_citygsx.png', after: 'geometry/residence_001176_normal_topogs.png', baseline: 'CityGS-X', tag: 'Residence · 001176' },
   ]},
   { name: 'Depth', views: [
-    { before: 'geometry/residence_000207_depth_citygsx.jpg', after: 'geometry/residence_000207_depth_topogs.jpg', baseline: 'CityGS-X', tag: 'Residence · 000207' },
-    { before: 'geometry/residence_001176_depth_citygsx.jpg', after: 'geometry/residence_001176_depth_topogs.jpg', baseline: 'CityGS-X', tag: 'Residence · 001176' },
+    { before: 'geometry/residence_000207_depth_citygsx.png', after: 'geometry/residence_000207_depth_topogs.png', baseline: 'CityGS-X', tag: 'Residence · 000207' },
+    { before: 'geometry/residence_001176_depth_citygsx.png', after: 'geometry/residence_001176_depth_topogs.png', baseline: 'CityGS-X', tag: 'Residence · 001176' },
   ]},
   { name: 'Mesh', views: [
     { before: 'geometry/residence_mesh_overview_citygsx.jpg', after: 'geometry/residence_mesh_overview_topogs.jpg', baseline: 'CityGS-X', tag: 'Residence · Overview' },
