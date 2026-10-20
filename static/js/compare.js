@@ -42,8 +42,8 @@ const GEOMETRY = [
     { before: 'geometry/residence_001176_depth_citygsx.png', after: 'geometry/residence_001176_depth_topogs.png', baseline: 'CityGS-X', tag: 'Residence · 001176' },
   ]},
   { name: 'Mesh', views: [
-    { before: 'geometry/residence_mesh_overview_citygsx.jpg', after: 'geometry/residence_mesh_overview_topogs.jpg', baseline: 'CityGS-X', tag: 'Residence · Overview' },
-    { before: 'geometry/residence_mesh_zoom_citygsx.jpg', after: 'geometry/residence_mesh_zoom_topogs.jpg', baseline: 'CityGS-X', tag: 'Residence · Close-up' },
+    { before: 'geometry/residence_mesh_overview_citygsx.png', after: 'geometry/residence_mesh_overview_topogs.png', baseline: 'CityGS-X', tag: 'Residence · Overview' },
+    { before: 'geometry/residence_mesh_closeup_citygsx.png', after: 'geometry/residence_mesh_closeup_topogs.png', baseline: 'CityGS-X', tag: 'Residence · Close-up' },
   ]},
 ];
 
